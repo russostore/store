@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Phone, Mail, MapPin, Instagram, Shield, Truck, CreditCard, Headphones } from "lucide-react";
 import { STORE_NAME, WHATSAPP_NUMBER, buildGenericWhatsappUrl } from "@/lib/products";
 
@@ -64,23 +65,22 @@ export function Footer() {
           {/* Marca */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] via-[#f4d97a] to-[#8b6914] flex items-center justify-center font-display text-black font-black text-lg">
-                R
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-display text-xl font-bold gold-gradient">
-                  RUSSO
-                </span>
-                <span className="font-display text-[10px] tracking-[0.5em] text-[#f4d97a]/70 mt-0.5">
-                  STORE
-                </span>
+              <div className="relative h-12 w-auto">
+                <Image
+                  src="/logo.png"
+                  alt="Russo Store"
+                  width={180}
+                  height={48}
+                  className="h-12 w-auto object-contain"
+                />
               </div>
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-md">
-              A {STORE_NAME} é referência em produtos premium: perfumes
-              importados, tênis de edição limitada, eletrônicos de ponta e
-              garrafas térmicas de elite. Atendimento personalizado e produtos
-              100% originais.
+              A {STORE_NAME} é a loja especializada na linha{" "}
+              <span className="text-[#f4d97a]">Mizuno Wave Prophecy</span> —
+              todos os modelos (M, LE, LS, Edge, Glide, Bolt e Sonic) em todos
+              os tamanhos (37 ao 45). Atendimento personalizado e produtos 100%
+              originais.
             </p>
             <a
               href={waLink}

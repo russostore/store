@@ -1,255 +1,249 @@
-// Catálogo Russo Store — produtos com imagens reais via z-ai image-search
+// Catálogo Russo Store — Linha Mizuno Wave Prophecy (todos os modelos, todos os tamanhos)
 
 export type Product = {
   id: string;
   name: string;
-  category: "Perfumes" | "Tênis" | "Eletrônicos" | "Garrafas Térmicas";
+  category: "Mizuno Wave Prophecy";
+  variant: string;
   price: number;
   oldPrice?: number;
   image: string;
   description: string;
   highlight?: string;
   badge?: string;
+  colors?: string[];
 };
 
 export const WHATSAPP_NUMBER = "5516992800385";
 export const STORE_NAME = "Russo Store";
 
+// Tamanhos brasileiros disponíveis para todos os modelos
+export const SIZES = [37, 38, 39, 40, 41, 42, 43, 44, 45] as const;
+
+// Variantes/linhas dentro da coleção Prophecy — para filtros rápidos
 export const CATEGORIES = [
   {
-    id: "Perfumes",
-    name: "Perfumes",
-    description: "Fragrâncias importadas e premium",
-    icon: "Sparkles",
-  },
-  {
-    id: "Tênis",
-    name: "Tênis",
-    description: "Modelos originais e edição limitada",
+    id: "Todos",
+    name: "Todos os modelos",
+    description: "Coleção completa Mizuno Wave Prophecy",
     icon: "Footprints",
   },
   {
-    id: "Eletrônicos",
-    name: "Eletrônicos",
-    description: "Tecnologia de ponta e áudio premium",
-    icon: "Smartphone",
+    id: "Prophecy M",
+    name: "Prophecy M",
+    description: "Edição principal — performance máxima",
+    icon: "Zap",
   },
   {
-    id: "Garrafas Térmicas",
-    name: "Garrafas Térmicas",
-    description: "Performance térmica de elite",
-    icon: "CupSoda",
+    id: "Prophecy LE",
+    name: "Prophecy LE",
+    description: "Limited Edition — acabamento premium",
+    icon: "Crown",
+  },
+  {
+    id: "Prophecy LS",
+    name: "Prophecy LS",
+    description: "Lifestyle — uso urbano e casual",
+    icon: "Sparkles",
+  },
+  {
+    id: "Prophecy Edge",
+    name: "Prophecy Edge",
+    description: "Borda reforçada — estabilidade",
+    icon: "Hexagon",
+  },
+  {
+    id: "Prophecy Glide",
+    name: "Prophecy Glide",
+    description: "Deslizamento suave — corrida longa",
+    icon: "Wind",
+  },
+  {
+    id: "Prophecy Bolt",
+    name: "Prophecy Bolt",
+    description: "Explosão — treinos de velocidade",
+    icon: "Flame",
+  },
+  {
+    id: "Prophecy Sonic",
+    name: "Prophecy Sonic",
+    description: "Leveza — treino diário",
+    icon: "Rocket",
   },
 ] as const;
 
 export const PRODUCTS: Product[] = [
-  // ===== Perfumes =====
   {
-    id: "perf-001",
-    name: "Élixir Noir Intense",
-    category: "Perfumes",
-    price: 489.9,
-    oldPrice: 689.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d8a4eec1bc85.jpg",
-    description:
-      "Fragrância amadeirada intensa com notas de baunilha, oud e âmbar. Fixação de até 12 horas. Frasco de 100ml em vidro fumê.",
-    highlight: "Mais vendido",
-    badge: "Importado",
-  },
-  {
-    id: "perf-002",
-    name: "Gold Royale Eau de Parfum",
-    category: "Perfumes",
-    price: 649.0,
-    oldPrice: 899.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d5be3ed3629b.jpg",
-    description:
-      "Perfume premium com tampa banhada a ouro e notas de bergamota, jasmim e sândalo. Apresentação luxuosa para presentes.",
-    badge: "Edição Limitada",
-  },
-  {
-    id: "perf-003",
-    name: "Amber Oud Reserva",
-    category: "Perfumes",
-    price: 759.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5641aa5835db.png",
-    description:
-      "Reserva exclusiva com âmbar líquido, oud tailandês e baunilha de Madagascar. Para quem busca sofisticação sem concessões.",
-    badge: "Premium",
-  },
-  {
-    id: "perf-004",
-    name: "Fresh Aqua Sport",
-    category: "Perfumes",
-    price: 289.9,
-    oldPrice: 369.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ff7483d3cce0.jpg",
-    description:
-      "Fragrância cítrica aquosa com notas de toranja, hortelã e musk. Ideal para o dia a dia e climas quentes. 100ml.",
-    badge: "Promo",
-  },
-  // ===== Tênis =====
-  {
-    id: "tenis-001",
-    name: "Air Jordan 1 Retro High",
-    category: "Tênis",
+    id: "mzp-001",
+    name: "Mizuno Wave Prophecy M",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy M",
     price: 1299.0,
-    oldPrice: 1799.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/069a5d1cf51d.jpg",
+    oldPrice: 1899.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/38fd70f0d27d.jpg",
     description:
-      "Edição clássica em couro premium com câmara de ar e palmilha acolchoada. Tamanho 38 ao 45. Garantia de originalidade.",
-    highlight: "Original",
-    badge: "Best Seller",
+      "Modelo principal da linha Prophecy. Tecnologia Infinity Wave com amortecimento premium, cabedal em mesh respirável e solado de borracha de alta durabilidade. Disponível do 37 ao 45.",
+    highlight: "Mais vendido",
+    badge: "Principal",
+    colors: ["Preto", "Branco"],
   },
   {
-    id: "tenis-002",
-    name: "Ultraboost Light Running",
-    category: "Tênis",
-    price: 899.0,
-    oldPrice: 1199.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/76204d440062.jpg",
+    id: "mzp-002",
+    name: "Mizuno Wave Prophecy LE",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy LE",
+    price: 1799.0,
+    oldPrice: 2399.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9f0b4c48656c.jpg",
     description:
-      "Solado Boost com retorno de energia premium. Cabo Primeknit+ que se adapta ao pé. Ideal para corridas longas e treino.",
-    badge: "Lançamento",
+      "Limited Edition com acabamento premium em couro sintético nobuck. Numeração exclusiva, detalhes em metal escovado e palmilha memory foam. Tiragem limitada — apenas 100 pares por tamanho.",
+    badge: "Edição Limitada",
+    colors: ["Onyx", "Champagne"],
   },
   {
-    id: "tenis-003",
-    name: "Air Force 1 '07 Classic",
-    category: "Tênis",
-    price: 749.9,
-    oldPrice: 999.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a069051df884.png",
+    id: "mzp-003",
+    name: "Mizuno Wave Prophecy LS",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy LS",
+    price: 1149.0,
+    oldPrice: 1499.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/12c6ddf6cc90.jpg",
     description:
-      "O clássico branco imaculado em couro liso. Solado com câmara de ar para conforto o dia todo. Tamanhos 36 ao 44.",
-    badge: "Clássico",
+      "Versão lifestyle para uso urbano e casual. Design clean que combina com qualquer look, mantendo o amortecimento Infinity Wave para o dia a dia. Conforto premium em qualquer superfície.",
+    badge: "Lifestyle",
+    colors: ["Off-White", "Sand"],
   },
   {
-    id: "tenis-004",
-    name: "Yeezy Boost 350 V2",
-    category: "Tênis",
-    price: 1899.0,
-    oldPrice: 2499.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/91097fa7c1f4.jpg",
+    id: "mzp-004",
+    name: "Mizuno Wave Prophecy Edge",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Edge",
+    price: 1399.0,
+    oldPrice: 1749.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d7ae70a48a9d.jpg",
     description:
-      "Edição premium em cinza com solado Boost. Acabamento Primeknit com padrão translúcido lateral. Stock limitado.",
-    badge: "Premium",
-  },
-  // ===== Eletrônicos =====
-  {
-    id: "elec-001",
-    name: "iPhone 15 Pro Max 256GB",
-    category: "Eletrônicos",
-    price: 7999.0,
-    oldPrice: 9499.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/15cd955208ef.jpg",
-    description:
-      "Chip A17 Pro, estrutura em titânio, câmera de 48MP e tela Super Retina XDR de 6.7 polegadas. Lacrado na caixa.",
-    highlight: "Top de linha",
-    badge: "Lacrado",
+      "Borda lateral reforçada com placa de TPU para estabilidade máxima em mudanças de direção. Ideal para treinos funcionais, HIIT e CrossFit. Solado com grip multiterreno.",
+    badge: "Performance",
+    colors: ["Preto/Vermelho", "Preto/Laranja"],
   },
   {
-    id: "elec-002",
-    name: "AirPods Pro 2ª geração",
-    category: "Eletrônicos",
-    price: 1899.0,
-    oldPrice: 2499.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/078ba79e107a.jpg",
+    id: "mzp-005",
+    name: "Mizuno Wave Prophecy Glide",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Glide",
+    price: 1249.0,
+    oldPrice: 1599.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4ee0d36f2551.jpg",
     description:
-      "Cancelamento ativo de ruído aprimorado, áudio espacial e case MagSafe com alto-falante. Até 30h de bateria.",
-    badge: "Original",
+      "Desenvolvido para corridas longas. Espuma U4icX com retorno de energia otimizado, mesh translúcido super respirável e drop de 10mm. Perfeito para meia maratona e maratona.",
+    badge: "Long Run",
+    colors: ["Azul", "Verde Fluo"],
   },
   {
-    id: "elec-003",
-    name: "Apple Watch Ultra 2",
-    category: "Eletrônicos",
-    price: 6499.0,
-    oldPrice: 7999.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/69917b1d3680.jpg",
+    id: "mzp-006",
+    name: "Mizuno Wave Prophecy Bolt",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Bolt",
+    price: 1349.0,
+    oldPrice: 1699.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/737b6de4af5b.jpg",
     description:
-      "Caixa em titânio de 49mm, brilho de 3000 nits, GPS de dupla frequência e bateria de até 72h. Para esportes extremos.",
-    badge: "Premium",
+      "Construção leve para treinos de velocidade e tiros. Placa de carbono na entressola para impulsão explosiva. Peso reduzido a 248g (tamanho 40). Drop de 8mm para corrida natural.",
+    badge: "Speed",
+    colors: ["Amarelo Fluo", "Laranja"],
   },
   {
-    id: "elec-004",
-    name: "Samsung Galaxy S24 Ultra",
-    category: "Eletrônicos",
-    price: 6299.0,
-    oldPrice: 7999.0,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2f5eb936d763.jpg",
+    id: "mzp-007",
+    name: "Mizuno Wave Prophecy Sonic",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Sonic",
+    price: 1099.0,
+    oldPrice: 1399.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b6bf8f29a630.jpg",
     description:
-      "Tela Dynamic AMOLED 2X de 6.8 polegadas, câmera de 200MP com zoom óptico 5x e S Pen integrada. 512GB.",
-    badge: "Oferta",
-  },
-  // ===== Garrafas Térmicas =====
-  {
-    id: "gar-001",
-    name: "Stanley Quencher H2.0 1.18L",
-    category: "Garrafas Térmicas",
-    price: 279.9,
-    oldPrice: 379.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ab49094e502.jpg",
-    description:
-      "Manter gelo por até 24h e quente por 12h. Tampa FlowState com 3 modos de beber. Alça ergonômica para transporte.",
-    highlight: "Fenômeno",
-    badge: "Top",
+      "Modelo de entrada da linha Prophecy, mas com toda a tecnologia Infinity Wave. Ideal para treino diário, uso casual e quem está começando no mundo running. Custo-benefício imbatível.",
+    badge: "Daily",
+    colors: ["Cinza", "Preto"],
   },
   {
-    id: "gar-002",
-    name: "Hydro Flask 32oz Wide Mouth",
-    category: "Garrafas Térmicas",
-    price: 249.9,
-    oldPrice: 329.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/51020fd7a101.jpg",
+    id: "mzp-008",
+    name: "Mizuno Wave Prophecy Classic",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy M",
+    price: 1199.0,
+    oldPrice: 1549.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/15e8048dbf0e.jpg",
     description:
-      "Construção em aço inox 18/8 com isolamento TempShield. Mantém frio por 24h e quente por 12h. BPA-free.",
-    badge: "Premium",
+      "Colorway clássico preto total — a peça mais versátil da coleção. Combina com qualquer produção, do esportivo ao casual chic. Cabedal em mesh premium com detalhes em camurça sintética.",
+    highlight: "Clássico",
+    badge: "Colorway",
+    colors: ["Preto Total"],
   },
   {
-    id: "gar-003",
-    name: "Termo Premium Inox 1L",
-    category: "Garrafas Térmicas",
-    price: 179.9,
-    oldPrice: 239.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6e0d0fca3e78.jpg",
+    id: "mzp-009",
+    name: "Mizuno Wave Prophecy White Silver",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy M",
+    price: 1199.0,
+    oldPrice: 1549.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0f5e91c10beb.jpg",
     description:
-      "Garrafa térmica de parede dupla em aço inox preto fosco. Mantém temperatura por 18h. Tampa com travas de segurança.",
-    badge: "Promo",
+      "Colorway branco com prata — clean e atemporal. Reflexos em detalhes holográficos que brilham sob a luz. Perfeito para looks urbanos e composições minimalistas.",
+    badge: "Colorway",
+    colors: ["Branco/Prata"],
   },
   {
-    id: "gar-004",
-    name: "Tumbler Térmico 600ml",
-    category: "Garrafas Térmicas",
-    price: 149.9,
-    oldPrice: 199.9,
-    image:
-      "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a0f0fcfaa858.jpg",
+    id: "mzp-010",
+    name: "Mizuno Wave Prophecy Red Black",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Edge",
+    price: 1349.0,
+    oldPrice: 1699.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/badca8525a70.jpg",
     description:
-      "Copo térmico com tampa deslizante e canudo de inox. Perfeito para café, sucos e drinks gelados. Manter frio por 12h.",
-    badge: "Novidade",
+      "Colorway vermelho e preto — para quem não passa despercebido. Detalhes em vermelho vivo sobre base preta fosca. A combinação mais agressiva e esportiva da linha.",
+    badge: "Colorway",
+    colors: ["Vermelho/Preto"],
+  },
+  {
+    id: "mzp-011",
+    name: "Mizuno Wave Prophecy Blue Navy",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy Glide",
+    price: 1249.0,
+    oldPrice: 1599.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4a575307974d.jpg",
+    description:
+      "Colorway azul marinho com detalhes em azul royal. Visual sofisticado para atletas exigentes. Espuma U4icX com retorno de energia premium para corridas de longa distância.",
+    badge: "Colorway",
+    colors: ["Navy", "Royal Blue"],
+  },
+  {
+    id: "mzp-012",
+    name: "Mizuno Wave Prophecy Grey Premium",
+    category: "Mizuno Wave Prophecy",
+    variant: "Prophecy LS",
+    price: 1149.0,
+    oldPrice: 1499.0,
+    image: "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9312e192c1ae.jpg",
+    description:
+      "Colorway cinza premium — o tênis lifestyle perfeito. Tons de cinza em degradê com palmilha memory foam de 8mm de espessura. Conforto para o dia inteiro, estilo para qualquer ocasião.",
+    badge: "Colorway",
+    colors: ["Cinza Claro", "Cinza Chumbo"],
   },
 ];
 
-export function buildWhatsappUrl(product: Product): string {
-  const msg = `Olá! Acessei o site da Russo Store e gostaria de comprar o produto: ${product.name} (R$ ${product.price.toFixed(2).replace(".", ",")}). Código: ${product.id}.`;
+/**
+ * Monta a URL do WhatsApp com a mensagem pré-preenchida,
+ * já incluindo o tamanho selecionado pelo cliente.
+ */
+export function buildWhatsappUrl(product: Product, size?: number): string {
+  const sizeText = size ? ` — Tamanho: ${size}` : "";
+  const msg = `Olá! Acessei o site da Russo Store e gostaria de comprar o produto: ${product.name} (R$ ${product.price.toFixed(2).replace(".", ",")}). Código: ${product.id}${sizeText}.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
 export function buildGenericWhatsappUrl(): string {
-  const msg = `Olá! Acessei o site da Russo Store e gostaria de mais informações sobre os produtos disponíveis.`;
+  const msg = `Olá! Acessei o site da Russo Store e gostaria de mais informações sobre a linha Mizuno Wave Prophecy disponível.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }

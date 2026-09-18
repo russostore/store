@@ -26,34 +26,35 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Russo Store — Premium Shopping Experience",
+  title: "Russo Store — Mizuno Wave Prophecy | Tênis Premium em Todos os Tamanhos",
   description:
-    "Russo Store: perfumes importados, tênis premium, eletrônicos de ponta e garrafas térmicas. Qualidade de elite com atendimento direto via WhatsApp.",
+    "Russo Store: loja especializada na linha Mizuno Wave Prophecy. Modelos M, LE, LS, Edge, Glide, Bolt e Sonic em todos os tamanhos (37 ao 45). Atendimento direto via WhatsApp.",
   keywords: [
     "Russo Store",
-    "perfumes",
-    "tênis",
-    "eletrônicos",
-    "garrafas térmicas",
+    "Mizuno Wave Prophecy",
+    "Mizuno Prophecy",
+    "tênis Mizuno",
+    "tênis premium",
+    "running",
+    "lifestyle sneaker",
     "ecommerce",
-    "loja online",
   ],
   authors: [{ name: "Russo Store" }],
   icons: {
-    icon: "logo.svg",
+    icon: "logo.png",
   },
   openGraph: {
-    title: "Russo Store — Premium Shopping",
+    title: "Russo Store — Mizuno Wave Prophecy",
     description:
-      "Perfumes, tênis, eletrônicos e garrafas térmicas com atendimento direto via WhatsApp.",
+      "Tênis Mizuno Wave Prophecy em todos os modelos e tamanhos. Compra direta via WhatsApp.",
     siteName: "Russo Store",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Russo Store — Premium Shopping",
+    title: "Russo Store — Mizuno Wave Prophecy",
     description:
-      "Perfumes, tênis, eletrônicos e garrafas térmicas. Compra direta via WhatsApp.",
+      "Tênis Mizuno Wave Prophecy em todos os modelos e tamanhos. Compra direta via WhatsApp.",
   },
 };
 

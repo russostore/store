@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "label": "prophecy-m",
+      "query": "Mizuno Wave Prophecy M running shoe premium",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/38fd70f0d27d.jpg"
+    },
+    {
+      "label": "prophecy-le",
+      "query": "Mizuno Wave Prophecy LE limited edition sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9f0b4c48656c.jpg"
+    },
+    {
+      "label": "prophecy-ls",
+      "query": "Mizuno Wave Prophecy LS lifestyle sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/12c6ddf6cc90.jpg"
+    },
+    {
+      "label": "prophecy-edge",
+      "query": "Mizuno Wave Prophecy Edge running shoe",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d7ae70a48a9d.jpg"
+    },
+    {
+      "label": "prophecy-glide",
+      "query": "Mizuno Wave Prophecy Glide sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4ee0d36f2551.jpg"
+    },
+    {
+      "label": "prophecy-bolt",
+      "query": "Mizuno Wave Prophecy Bolt running shoe",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/737b6de4af5b.jpg"
+    },
+    {
+      "label": "prophecy-sonic",
+      "query": "Mizuno Wave Prophecy Sonic sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b6bf8f29a630.jpg"
+    },
+    {
+      "label": "prophecy-classic",
+      "query": "Mizuno Wave Prophecy classic black sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/15e8048dbf0e.jpg"
+    },
+    {
+      "label": "prophecy-white",
+      "query": "Mizuno Wave Prophecy white silver sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0f5e91c10beb.jpg"
+    },
+    {
+      "label": "prophecy-red",
+      "query": "Mizuno Wave Prophecy red black running shoe",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/badca8525a70.jpg"
+    },
+    {
+      "label": "prophecy-blue",
+      "query": "Mizuno Wave Prophecy blue navy sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4a575307974d.jpg"
+    },
+    {
+      "label": "prophecy-grey",
+      "query": "Mizuno Wave Prophecy grey premium sneaker",
+      "url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9312e192c1ae.jpg"
+    }
+  ]
+}

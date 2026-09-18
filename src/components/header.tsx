@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X, Phone } from "lucide-react";
-import { STORE_NAME, WHATSAPP_NUMBER, CATEGORIES } from "@/lib/products";
+import Image from "next/image";
+import { Menu, X, Phone } from "lucide-react";
+import { WHATSAPP_NUMBER, CATEGORIES } from "@/lib/products";
 
 type HeaderProps = {
   onCategorySelect: (cat: string) => void;
@@ -35,19 +36,15 @@ export function Header({ onCategorySelect, activeCategory }: HeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#top" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] via-[#f4d97a] to-[#8b6914] flex items-center justify-center font-display text-black font-black text-lg shadow-lg shadow-[#d4af37]/30 group-hover:scale-110 transition-transform">
-              R
-            </div>
-            <div className="absolute inset-0 rounded-full ring-1 ring-[#d4af37]/30 group-hover:ring-[#d4af37]/60 transition-all" />
-          </div>
-          <div className="hidden sm:flex flex-col leading-none">
-            <span className="font-display text-xl font-bold gold-gradient">
-              RUSSO
-            </span>
-            <span className="font-display text-[10px] tracking-[0.5em] text-[#f4d97a]/70 mt-0.5">
-              STORE
-            </span>
+          <div className="relative h-10 w-auto">
+            <Image
+              src="/logo.png"
+              alt="Russo Store"
+              width={140}
+              height={40}
+              className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+              priority
+            />
           </div>
         </a>
 
