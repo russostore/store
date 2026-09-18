@@ -13,7 +13,7 @@ type Props = {
 export function ProductSection({ activeCategory, onCategoryChange }: Props) {
   const filtered = useMemo(() => {
     if (activeCategory === "Todos") return PRODUCTS;
-    return PRODUCTS.filter((p) => p.category === activeCategory);
+    return PRODUCTS.filter((p) => p.variant === activeCategory);
   }, [activeCategory]);
 
   return (

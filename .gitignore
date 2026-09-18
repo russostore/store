@@ -79,3 +79,16 @@ worklog.md
 /scripts/search-products.py
 /scripts/search-products.sh
 /scripts/products.json
+
+# Mizuno scraping intermediates (internal tooling)
+/scripts/debug-mizuno.py
+/scripts/scrape-mizuno.py
+/scripts/scrape-mizuno-v2.py
+/scripts/scrape-mizuno-v3.py
+/scripts/scrape-mizuno-v4-images.py
+/scripts/download-images.py
+/scripts/generate-products-ts.py
+/scripts/mizuno-found.json
+/scripts/mizuno-products.json
+/scripts/page-*-raw.json
+/scripts/page1-decoded.html

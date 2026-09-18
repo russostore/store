@@ -1,13 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const ITEMS = [
-  "★ Frete expresso 24h",
-  "★ Produtos 100% originais",
+  "★ 75 modelos Prophecy",
+  "★ Tamanhos 37 ao 45",
+  "★ Preço único R$ 399,90",
+  "★ Originais garantidos",
   "★ Atendimento via WhatsApp",
-  "★ Pix com 5% de desconto",
-  "★ Garantia estendida",
   "★ Envio para todo Brasil",
   "★ Consultor exclusivo",
   "★ Produtos lacrados",
@@ -26,7 +24,6 @@ export function Marquee() {
           </span>
         ))}
       </div>
-      {/* Gradientes laterais */}
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0a0a0c] to-transparent pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0a0a0c] to-transparent pointer-events-none" />
     </div>
