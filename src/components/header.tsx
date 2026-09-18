@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 import { WHATSAPP_NUMBER, CATEGORIES } from "@/lib/products";
+import { assetPath } from "@/lib/asset-path";
 
 type HeaderProps = {
   onCategorySelect: (cat: string) => void;
@@ -37,13 +38,10 @@ export function Header({ onCategorySelect, activeCategory }: HeaderProps) {
         {/* Logo */}
         <a href="#top" className="flex items-center gap-3 group">
           <div className="relative h-10 w-auto">
-            <Image
-              src="/logo.png"
+            <img
+              src={assetPath("/logo.png")}
               alt="Russo Store"
-              width={140}
-              height={40}
               className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
-              priority
             />
           </div>
         </a>

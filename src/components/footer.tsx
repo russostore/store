@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { Phone, Mail, MapPin, Instagram, Shield, Truck, CreditCard, Headphones } from "lucide-react";
 import { STORE_NAME, WHATSAPP_NUMBER, buildGenericWhatsappUrl } from "@/lib/products";
+import { assetPath } from "@/lib/asset-path";
 
 const FEATURES = [
   {
@@ -66,11 +66,9 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <div className="relative h-12 w-auto">
-                <Image
-                  src="/logo.png"
+                <img
+                  src={assetPath("/logo.png")}
                   alt="Russo Store"
-                  width={180}
-                  height={48}
                   className="h-12 w-auto object-contain"
                 />
               </div>

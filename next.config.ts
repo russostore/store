@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
   basePath: `/${repoName}`,
   assetPrefix: `/${repoName}/`,
   trailingSlash: true,
+  // Tornar basePath disponível no cliente
+  env: {
+    NEXT_PUBLIC_BASE_PATH: `/${repoName}`,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -30,9 +34,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "sfile.chatglm.cn",
       },
+      {
+        protocol: "https",
+        hostname: "mizunobr.vtexassets.com",
+      },
+      {
+        protocol: "https",
+        hostname: "mizunobrio.vtexassets.com",
+      },
     ],
   },
-  // Não usar allowedDevOrigins em produção (era só para dev local).
   reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,

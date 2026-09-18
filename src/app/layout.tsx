@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Russo Store" }],
   icons: {
-    icon: "logo.png",
+    icon: "/store/logo.png",
   },
   openGraph: {
     title: "Russo Store — Mizuno Wave Prophecy",

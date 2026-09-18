@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import type { Product } from "@/lib/products";
 import { buildWhatsappUrl, SIZES } from "@/lib/products";
+import { assetPath } from "@/lib/asset-path";
 
 type Props = {
   product: Product;
@@ -14,6 +15,7 @@ type Props = {
 export function ProductCard({ product, index }: Props) {
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const waLink = buildWhatsappUrl(product, selectedSize ?? undefined);
+  const imageUrl = assetPath(product.image);
 
   return (
     <motion.article
@@ -26,7 +28,7 @@ export function ProductCard({ product, index }: Props) {
       {/* Imagem */}
       <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0a0a0c]">
         <img
-          src={product.image}
+          src={imageUrl}
           alt={product.name}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
