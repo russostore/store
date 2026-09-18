@@ -101,7 +101,7 @@ export function Hero({ onExplore }: HeroProps) {
           >
             Todos os modelos da linha Prophecy em um só lugar: M, LS, Beta, MOC,
             13, 14, GTX e as collaborations exclusivas.{" "}
-            <span className="text-[#f4d97a] font-medium">75 modelos</span>{" "}
+            <span className="text-[#f4d97a] font-medium">69 modelos</span>{" "}
             disponíveis, todos os tamanhos (37 ao 45), preço único de{" "}
             <span className="text-[#f4d97a] font-medium">R$ 399,90</span>. Compra
             direta via WhatsApp.
@@ -118,7 +118,7 @@ export function Hero({ onExplore }: HeroProps) {
               className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] to-[#8b6914] px-8 py-4 text-sm font-bold uppercase tracking-widest text-black shadow-2xl shadow-[#d4af37]/30 hover:shadow-[#d4af37]/50 transition-all hover:scale-105"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Ver 75 modelos
+                Ver 69 modelos
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </span>
               <span className="absolute inset-0 shimmer-gold opacity-50" />
@@ -140,7 +140,7 @@ export function Hero({ onExplore }: HeroProps) {
             className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto"
           >
             {[
-              { num: "75", label: "Modelos Prophecy" },
+              { num: "69", label: "Modelos Prophecy" },
               { num: "9", label: "Tamanhos (37-45)" },
               { num: "R$399", label: "Preço único" },
               { num: "100%", label: "Originais" },

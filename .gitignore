@@ -92,3 +92,7 @@ worklog.md
 /scripts/mizuno-products.json
 /scripts/page-*-raw.json
 /scripts/page1-decoded.html
+
+# Mizuno filtering script (internal)
+/scripts/filter-kits.py
+

@@ -1,7 +1,7 @@
 "use client";
 
 const ITEMS = [
-  "★ 75 modelos Prophecy",
+  "★ 69 modelos Prophecy",
   "★ Tamanhos 37 ao 45",
   "★ Preço único R$ 399,90",
   "★ Originais garantidos",
