@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { Header } from "@/components/header";
+import { HeroSlide } from "@/components/hero-slide";
 import { Hero } from "@/components/hero";
 import { Marquee } from "@/components/marquee";
 import { CategoryStrip } from "@/components/category-strip";
@@ -69,6 +70,8 @@ export default function Home() {
       />
 
       <div className="flex-1 flex flex-col">
+        <HeroSlide onExplore={handleExplore} />
+
         <Hero onExplore={handleExplore} />
 
         <Marquee />
