@@ -14,6 +14,7 @@ import {
   TrendingUp,
   Award,
   Droplets,
+  Shield,
 } from "lucide-react";
 import { CATEGORIES } from "@/lib/products";
 
@@ -30,6 +31,7 @@ const ICONS = {
   TrendingUp,
   Award,
   Droplets,
+  Shield,
 } as const;
 
 type Props = {

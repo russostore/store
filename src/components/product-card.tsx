@@ -13,9 +13,11 @@ type Props = {
 };
 
 export function ProductCard({ product, index }: Props) {
-  const [selectedSize, setSelectedSize] = useState<number | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string | number | null>(null);
   const waLink = buildWhatsappUrl(product, selectedSize ?? undefined);
   const imageUrl = assetPath(product.image);
+  // Usa tamanhos do produto (se definido) ou o padrão de calçados (37-45)
+  const availableSizes = (product.sizes ?? [...SIZES]) as (string | number)[];
 
   return (
     <motion.article
@@ -102,19 +104,22 @@ export function ProductCard({ product, index }: Props) {
             Tamanho
           </div>
           <div className="flex flex-wrap gap-1">
-            {SIZES.map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={`min-w-[34px] h-8 px-1.5 rounded-md text-xs font-bold transition-all border ${
-                  selectedSize === size
-                    ? "bg-[#d4af37] text-black border-[#d4af37] shadow-md shadow-[#d4af37]/30"
-                    : "bg-white/5 text-white/70 border-white/10 hover:border-[#d4af37]/50 hover:text-[#f4d97a]"
-                }`}
-              >
-                {size}
-              </button>
-            ))}
+            {availableSizes.map((size) => {
+              const isActive = selectedSize === size;
+              return (
+                <button
+                  key={String(size)}
+                  onClick={() => setSelectedSize(size)}
+                  className={`min-w-[34px] h-8 px-2 rounded-md text-xs font-bold transition-all border ${
+                    isActive
+                      ? "bg-[#d4af37] text-black border-[#d4af37] shadow-md shadow-[#d4af37]/30"
+                      : "bg-white/5 text-white/70 border-white/10 hover:border-[#d4af37]/50 hover:text-[#f4d97a]"
+                  }`}
+                >
+                  {size}
+                </button>
+              );
+            })}
           </div>
         </div>
 

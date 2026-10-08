@@ -103,7 +103,9 @@ export function Hero({ onExplore }: HeroProps) {
             13, 14, GTX e as collaborations exclusivas.{" "}
             <span className="text-[#f4d97a] font-medium">69 modelos</span>{" "}
             disponíveis, todos os tamanhos (37 ao 45), preço único de{" "}
-            <span className="text-[#f4d97a] font-medium">R$ 399,90</span>. Compra
+            <span className="text-[#f4d97a] font-medium">R$ 399,90</span>.{" "}
+            <span className="text-[#f4d97a] font-medium">+ 35 camisas de times</span>{" "}
+            a partir de <span className="text-[#f4d97a] font-medium">R$ 129,90</span>. Compra
             direta via WhatsApp.
           </motion.p>
 
@@ -118,7 +120,7 @@ export function Hero({ onExplore }: HeroProps) {
               className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] to-[#8b6914] px-8 py-4 text-sm font-bold uppercase tracking-widest text-black shadow-2xl shadow-[#d4af37]/30 hover:shadow-[#d4af37]/50 transition-all hover:scale-105"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Ver 69 modelos
+                Ver catálogo completo
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </span>
               <span className="absolute inset-0 shimmer-gold opacity-50" />
@@ -140,9 +142,9 @@ export function Hero({ onExplore }: HeroProps) {
             className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto"
           >
             {[
-              { num: "69", label: "Modelos Prophecy" },
-              { num: "9", label: "Tamanhos (37-45)" },
-              { num: "R$399", label: "Preço único" },
+              { num: "69", label: "Tênis Prophecy" },
+              { num: "35", label: "Camisas de times" },
+              { num: "R$129", label: "Camisas a partir" },
               { num: "100%", label: "Originais" },
             ].map((s, i) => (
               <div

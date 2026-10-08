@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/product-card";
-import { PRODUCTS, CATEGORIES } from "@/lib/products";
+import { ALL_PRODUCTS, CATEGORIES } from "@/lib/products";
 
 type Props = {
   activeCategory: string;
@@ -12,8 +12,11 @@ type Props = {
 
 export function ProductSection({ activeCategory, onCategoryChange }: Props) {
   const filtered = useMemo(() => {
-    if (activeCategory === "Todos") return PRODUCTS;
-    return PRODUCTS.filter((p) => p.variant === activeCategory);
+    if (activeCategory === "Todos") return ALL_PRODUCTS;
+    // Filtro por variant (usado pelo header antigo) ou category (multi-categoria)
+    return ALL_PRODUCTS.filter(
+      (p) => p.variant === activeCategory || p.category === activeCategory
+    );
   }, [activeCategory]);
 
   return (

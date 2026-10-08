@@ -5,7 +5,9 @@
 export type Product = {
   id: string;
   name: string;
-  category: "Mizuno Wave Prophecy";
+  /** Categoria principal (multi-categoria e-commerce) */
+  category: string;
+  /** Variante interna da categoria (usado para filtros) */
   variant: string;
   price: number;
   image: string;
@@ -13,13 +15,18 @@ export type Product = {
   highlight?: string;
   badge?: string;
   colors?: string[];
+  /** Tamanhos disponíveis (sobrescreve SIZES global se definido) */
+  sizes?: (string | number)[];
 };
 
 export const WHATSAPP_NUMBER = "5516992800385";
 export const STORE_NAME = "Russo Store";
 
-// Tamanhos brasileiros disponíveis para todos os modelos
+// Tamanhos brasileiros disponíveis para todos os modelos (calçados)
 export const SIZES = [37, 38, 39, 40, 41, 42, 43, 44, 45] as const;
+
+// Tamanhos para camisetas/roupas (formato PP–GGG)
+export const SHIRT_SIZES = ["PP", "P", "M", "G", "GG", "XGG", "XXGG"] as const;
 
 // Filtros rápidos por variante
 export const CATEGORIES = [
@@ -76,6 +83,32 @@ export const CATEGORIES = [
     name: "GTX",
     description: "Gore-Tex impermeável",
     icon: "Droplets",
+  },
+  // ============ NOVAS CATEGORIAS ============
+  {
+    id: "Camisetas de Time",
+    name: "Camisas de Times",
+    description: "35 times brasileiros — Série A e B",
+    icon: "Shield",
+  },
+] as const;
+
+/**
+ * Macro-categorias para o menu multi-categoria e-commerce.
+ * Agrupa as variantes internas em departamentos visíveis no header.
+ */
+export const DEPARTMENTS = [
+  {
+    id: "calcados",
+    name: "Calçados",
+    icon: "Footprints",
+    categories: ["M", "LS", "Beta", "MOC", "Prophecy 13", "Prophecy 14", "Collab", "GTX"],
+  },
+  {
+    id: "camisetas-time",
+    name: "Camisas de Times",
+    icon: "Shield",
+    categories: ["Camisetas de Time"],
   },
 ] as const;
 
@@ -858,7 +891,7 @@ export const PRODUCTS: Product[] = [
  * Monta a URL do WhatsApp com a mensagem pré-preenchida,
  * já incluindo o tamanho selecionado pelo cliente.
  */
-export function buildWhatsappUrl(product: Product, size?: number): string {
+export function buildWhatsappUrl(product: Product, size?: string | number): string {
   const sizeText = size ? ` — Tamanho: ${size}` : "";
   const msg = `Olá! Acessei o site da Russo Store e gostaria de comprar o produto: ${product.name} (R$ ${product.price.toFixed(2).replace(".", ",")}). Código: ${product.id}${sizeText}.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -868,3 +901,407 @@ export function buildGenericWhatsappUrl(): string {
   const msg = `Olá! Acessei o site da Russo Store e gostaria de mais informações sobre a linha Mizuno Wave Prophecy disponível.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
+
+// ============================================================
+// CAMISETAS DE TIMES BRASILEIROS (35 clubes — preço único R$ 129,90)
+// ============================================================
+const TIMES_BRASILEIROS: Product[] = [
+  {
+    id: "cbr-001",
+    name: "Camisa do Flamengo 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/flamengo.jpg",
+    description: `Camisa oficial do Flamengo, modelo 2024. Tecido Dry-Plus respirável, gola careca, mangas raglan. Cores rubro-negras tradicionais. Produto original com etiquetas de procedência. Tamanhos PP ao XXGG disponíveis. Estampas aplicadas em alta resolução, sem desbotamento. Compra direta via WhatsApp com atendimento personalizado.`,
+    badge: "Mais vendida",
+    colors: ["Rubro-Negro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-002",
+    name: "Camisa do Palmeiras 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/palmeiras.jpg",
+    description: `Camisa oficial do Palmeiras 2024. Verde clássico com detalhes brancos, gola careca, tecido respirável. Equipamento autêntico do Verdão, com estampas em alta definição. Disponível nos tamanhos PP ao XXGG. Original com selo de autenticidade. Garanta a sua e mostre o seu amor pelo Palestra.`,
+    badge: "Mais vendida",
+    colors: ["Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-003",
+    name: "Camisa do Corinthians 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/corinthians.jpg",
+    description: `Camisa oficial do Corinthians 2024. Padrão alvinegro clássico, com listras horizontais icônicas. Gola careca, mangas raglan e tecido Dry-Plus. Produto original do Timão, com acabamento premium. Disponível do PP ao XXGG. Vista as cores do Corinthians em qualquer lugar.`,
+    badge: "Mais vendida",
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-004",
+    name: "Camisa do São Paulo 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/sao-paulo.jpg",
+    description: `Camisa oficial do São Paulo FC 2024. Tricolor paulista — vermelho, preto e branco — em design moderno. Gola careca, tecido Dry-Plus respirável. Produto original com etiquetas de procedência. Tamanhos PP ao XXGG disponíveis. Vista o manto do Tricolor Paulista com autenticidade e conforto.`,
+    colors: ["Tricolor"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-005",
+    name: "Camisa do Santos 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/santos.jpg",
+    description: `Camisa oficial do Santos FC 2024. Branco imaculado com listras pretas na manga. Gola careca, tecido respirável Dry-Plus. Produto original do Peixe, com etiqueta de autenticidade. Tamanhos PP ao XXGG. Vista o manto da Baixada Santista com orgulho e estilo.`,
+    colors: ["Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-006",
+    name: "Camisa do Atlético-MG 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/atletico-mg.jpg",
+    description: `Camisa oficial do Atlético Mineiro 2024. Alvinegro mineiro com listras verticais. Gola careca, tecido Dry-Plus respirável. Produto original do Galo, com acabamento premium. Tamanhos PP ao XXGG disponíveis. Vista as cores do Clube Atlético Mineiro em qualquer ocasião.`,
+    badge: "Mais vendida",
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-007",
+    name: "Camisa do Cruzeiro 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/cruzeiro.jpg",
+    description: `Camisa oficial do Cruzeiro 2024. Azul cabul com detalhes brancos e detalhes em amarelo. Gola careca, tecido respirável Dry-Plus. Produto original do Cabuloso, com etiqueta de procedência. Tamanhos PP ao XXGG. Mostre a sua paixão pelo Cruzeiro Raposa.`,
+    colors: ["Azul"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-008",
+    name: "Camisa do Grêmio 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/gremio.jpg",
+    description: `Camisa oficial do Grêmio 2024. Tricolor gaúcho — azul, preto e branco — em listras verticais. Gola careca, tecido respirável. Produto original do Tricolor dos Pampas. Tamanhos PP ao XXGG disponíveis. Vista o manto do Imortal Tricolor com orgulho.`,
+    colors: ["Tricolor"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-009",
+    name: "Camisa do Internacional 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/internacional.jpg",
+    description: `Camisa oficial do Internacional 2024. Vermelho Colorado com listras brancas verticais. Gola careca, tecido Dry-Plus respirável. Produto original do Inter, com etiqueta de procedência. Tamanhos PP ao XXGG. Vista o manto do Colorado e mostre o seu amor pelo Clube do Povo.`,
+    badge: "Mais vendida",
+    colors: ["Vermelho"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-010",
+    name: "Camisa do Fluminense 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/fluminense.jpg",
+    description: `Camisa oficial do Fluminense 2024. Tricolor carioca — verde, grená e branco — em diagonal icônica. Gola careca, tecido respirável Dry-Plus. Produto original do Flu, com acabamento premium. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Tricolor das Laranjeiras.`,
+    colors: ["Tricolor"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-011",
+    name: "Camisa do Vasco da Gama 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/vasco.jpg",
+    description: `Camisa oficial do Vasco da Gama 2024. Cruzmaltina clássica, com listras diagonais pretas e brancas. Gola careca, tecido Dry-Plus. Produto original do Vasco, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Cruzmaltino e mostre o seu orgulho Gigante.`,
+    badge: "Mais vendida",
+    colors: ["Cruzmaltino"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-012",
+    name: "Camisa do Botafogo 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/botafogo.jpg",
+    description: `Camisa oficial do Botafogo 2024. Alvinegra clássica com estrela solitária. Gola careca, tecido Dry-Plus respirável. Produto original do Fogão, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Glorioso e mostre o seu amor pelo Alvinegro Carioca.`,
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-013",
+    name: "Camisa do Athletico-PR 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/athletico-pr.jpg",
+    description: `Camisa oficial do Athletico Paranaense 2024. Vermelho com listras pretas verticais. Gola careca, tecido Dry-Plus respirável. Produto original do Furacão, com acabamento premium. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Furacão do Paraná em qualquer ocasião.`,
+    colors: ["Vermelho-Preto"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-014",
+    name: "Camisa do Bahia 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/bahia.jpg",
+    description: `Camisa oficial do Esporte Clube Bahia 2024. Azul royal com detalhes brancos e vermelhos. Gola careca, tecido respirável Dry-Plus. Produto original do Esquadrão de Aço, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Bahia com orgulho e autenticidade.`,
+    colors: ["Azul-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-015",
+    name: "Camisa do Fortaleza 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/fortaleza.jpg",
+    description: `Camisa oficial do Fortaleza EC 2024. Azul royal com detalhes vermelhos e brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Leão do Pici, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Leão do Ceará em qualquer ocasião.`,
+    badge: "Mais vendida",
+    colors: ["Azul-Vermelho"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-016",
+    name: "Camisa do Ceará 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/ceara.jpg",
+    description: `Camisa oficial do Ceará Sporting Club 2024. Alvinegra clássica com listras verticais. Gola careca, tecido respirável Dry-Plus. Produto original do Vozão, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Vozão do Ceará com orgulho em qualquer lugar.`,
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-017",
+    name: "Camisa do Sport Recife 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/sport.jpg",
+    description: `Camisa oficial do Sport Club Recife 2024. Vermelho com detalhes pretos. Gola careca, tecido Dry-Plus respirável. Produto original do Leão da Ilha, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre o seu amor pelo Leão da Ilha em qualquer ocasião.`,
+    colors: ["Vermelho-Preto"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-018",
+    name: "Camisa do Vitória 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/vitoria.jpg",
+    description: `Camisa oficial do Esporte Clube Vitória 2024. Rubro-negro baiano com listras verticais. Gola careca, tecido Dry-Plus respirável. Produto original do Leão da Barra, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Leão da Barra com orgulho e estilo.`,
+    colors: ["Rubro-Negro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-019",
+    name: "Camisa da Chapecoense 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/chapecoense.jpg",
+    description: `Camisa oficial da Chapecoense 2024. Verde com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Verdão do Oeste, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores da Chapecoense com orgulho e respeito eterno.`,
+    colors: ["Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-020",
+    name: "Camisa do Goiás 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/goias.jpg",
+    description: `Camisa oficial do Goiás Esporte Clube 2024. Verde esmeralda com detalhes brancos. Gola careca, tecido respirável Dry-Plus. Produto original do Esmeraldino, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Verdão do Cerrado.`,
+    colors: ["Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-021",
+    name: "Camisa do Atlético-GO 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/atletico-go.jpg",
+    description: `Camisa oficial do Atlético Goianiense 2024. Vermelho com detalhes pretos. Gola careca, tecido Dry-Plus respirável. Produto original do Dragão, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Dragão Goiano com orgulho e autenticidade.`,
+    colors: ["Vermelho-Preto"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-022",
+    name: "Camisa do Coritiba 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/coritiba.jpg",
+    description: `Camisa oficial do Coritiba 2024. Verde e branco com listras verticais. Gola careca, tecido respirável Dry-Plus. Produto original do Coxa-Branca, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre o seu amor pelo Coxa com orgulho em qualquer ocasião.`,
+    colors: ["Verde-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-023",
+    name: "Camisa do Juventude 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/juventude.jpg",
+    description: `Camisa oficial do Juventude 2024. Verde com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Jasy, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Jasy com orgulho e autenticidade em qualquer ambiente.`,
+    colors: ["Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-024",
+    name: "Camisa do Cuiabá 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/cuiaba.jpg",
+    description: `Camisa oficial do Cuiabá EC 2024. Amarelo dourado com detalhes verdes. Gola careca, tecido respirável Dry-Plus. Produto original do Dourado, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Dourado Mato-grossense com estilo.`,
+    colors: ["Amarelo-Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-025",
+    name: "Camisa do Bragantino 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/bragantino.jpg",
+    description: `Camisa oficial do Red Bull Bragantino 2024. Branco com detalhes vermelhos. Gola careca, tecido Dry-Plus respirável. Produto original do Massa Bruta, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Massa Bruta com orgulho e modernidade.`,
+    colors: ["Branco-Vermelho"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-026",
+    name: "Camisa do América-MG 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/america-mg.jpg",
+    description: `Camisa oficial do América Mineiro 2024. Verde com detalhes brancos. Gola careca, tecido respirável Dry-Plus. Produto original do Coelho, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre o seu amor pelo Coelho em qualquer ocasião com autenticidade.`,
+    colors: ["Verde-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-027",
+    name: "Camisa do Náutico 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/nautico.jpg",
+    description: `Camisa oficial do Náutico Capibaribe 2024. Vermelho e branco com listras verticais. Gola careca, tecido Dry-Plus respirável. Produto original do Timbu, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Timbu com orgulho e tradição pernambucana.`,
+    colors: ["Vermelho-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-028",
+    name: "Camisa da Ponte Preta 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/ponte-preta.jpg",
+    description: `Camisa oficial da Ponte Preta 2024. Preto com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original da Macaca, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pela Macaca Campineira com orgulho e tradição.`,
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-029",
+    name: "Camisa do Guarani 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/guarani.jpg",
+    description: `Camisa oficial do Guarani FC 2024. Verde com detalhes brancos. Gola careca, tecido respirável Dry-Plus. Produto original do Bugre, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Bugre Campineiro com orgulho e história centenária.`,
+    colors: ["Verde"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-030",
+    name: "Camisa do Avaí 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/avai.jpg",
+    description: `Camisa oficial do Avaí FC 2024. Azul com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Leão da Serra, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre o seu amor pelo Leão da Serra Catarinense em qualquer ambiente.`,
+    colors: ["Azul-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-031",
+    name: "Camisa do Criciúma 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/criciuma.jpg",
+    description: `Camisa oficial do Criciúma EC 2024. Amarelo e preto com listras horizontais. Gola careca, tecido Dry-Plus respirável. Produto original do Tigre, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Tigro Catarinense com orgulho e tradição.`,
+    colors: ["Amarelo-Preto"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-032",
+    name: "Camisa do Vila Nova 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/vila-nova.jpg",
+    description: `Camisa oficial do Vila Nova GO 2024. Vermelho com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Tigre Goiano, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre a sua paixão pelo Tigre Goiano com autenticidade e orgulho.`,
+    colors: ["Vermelho-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-033",
+    name: "Camisa do Operário-PR 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/operario-pr.jpg",
+    description: `Camisa oficial do Operário Ferroviário 2024. Preto com detalhes brancos. Gola careca, tecido respirável Dry-Plus. Produto original do Fantasma da Sul, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Fantasma da Sul Matogrossense com orgulho e estilo.`,
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-034",
+    name: "Camisa do Londrina 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/londrina.jpg",
+    description: `Camisa oficial do Londrina EC 2024. Azul com detalhes brancos. Gola careca, tecido Dry-Plus respirável. Produto original do Tubarão, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Mostre o seu amor pelo Tubarão do Norte Paranaense em qualquer ocasião.`,
+    colors: ["Azul-Branco"],
+    sizes: [...SHIRT_SIZES],
+  },
+  {
+    id: "cbr-035",
+    name: "Camisa do Figueirense 2024",
+    category: "Camisetas de Time",
+    variant: "Camisetas de Time",
+    price: 129.9,
+    image: "/products/camisas-times/figueirense.jpg",
+    description: `Camisa oficial do Figueirense 2024. Preto e branco com listras. Gola careca, tecido Dry-Plus respirável. Produto original do Furacão do Estreito, com etiqueta de procedência. Tamanhos PP ao XXGG disponíveis. Vista as cores do Furacão do Estreito Catarinense com orgulho e tradição.`,
+    colors: ["Alvinegro"],
+    sizes: [...SHIRT_SIZES],
+  },
+];
+
+// Concatena os times aos produtos existentes
+export const TIMES_PRODUCTS = TIMES_BRASILEIROS;
+
+// Lista final de produtos (Mizuno + Camisetas)
+export const ALL_PRODUCTS: Product[] = [...PRODUCTS, ...TIMES_BRASILEIROS];
